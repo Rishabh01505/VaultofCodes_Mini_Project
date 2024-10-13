@@ -1,0 +1,279 @@
+/* General Styles */
+
+body,
+html {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden; /*prevent horizontal scrolling*/
+}
+
+/* Wrap the content of the page (everything except footer) */
+.wrapper {
+  min-height: 100vh; /* Full height of the viewport */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the main content section grows and pushes the footer down */
+.main-content {
+  flex: 1;
+}
+
+/* Header and Filter Section */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+nav ul li {
+  margin: 0 12px;
+}
+
+nav ul li a {
+  color: #fff;
+  background-color: #333;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #ffd700; /* Highlight active/hovered button */
+}
+
+/* Hide categories by default for filter functionality */
+.category {
+  display: none;
+}
+
+/* Show only the active category */
+.category.active {
+  display: block;
+}
+
+/* Portfolio Section */
+.portfolio {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Category Title Styling */
+.category-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.category {
+  margin-bottom: 40px;
+}
+
+/* Video Grid Styling */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(450px, 1fr)
+  ); /* Responsive grid columns */
+  gap: 20px;
+  justify-content: center; /* Center align the videos */
+}
+
+/* Video Item Styling */
+.video-item {
+  width: 100%;
+  position: relative;
+  padding-top: 56.25%; //16:9 Aspect Ratio
+  background-color: #000;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Video Text Styling */
+.video-item p {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Hover Effects on Videos */
+.video-item:hover video {
+  transform: scale(1.05); /* Slight zoom effect */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* Styling for Horizontal Videos */
+.video-item.horizontal video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Fit the horizontal video without distorting */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* Styling for Vertical Videos */
+.video-item.vertical video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 84%;
+  object-fit: contain; /* Fit the vertical video without cropping */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* Lightbox Styles */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox video {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Footer Section */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+  margin-top: 50px;
+  /* Ensure the footer stays at the bottom, regardless of content height */
+  position: relative; /* Make sure it's in the flow of the document */
+  bottom: 0;
+}
+
+/* Responsive Media Queries */
+@media (min-width: 769px) {
+  .category-title {
+    font-size: 22px;
+  }
+
+  .video-item {
+    padding-top: 56.25%; /* Maintain 16:9 ratio */
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(450px, 1fr)
+    ); /* Smaller size for mobile */
+  }
+
+  nav ul li {
+    margin: 5px 12px;
+  }
+
+  nav ul li a {
+    padding: 5px;
+    font-size: 16px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-title {
+    font-size: 22px;
+  }
+
+  .video-item {
+    padding-top: 56.25%; /* Maintain 16:9 ratio */
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(200px, 1fr)
+    ); /* Smaller size for mobile */
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack filters vertically on small screens */
+    align-items: center; /* Center the filters */
+  }
+
+  nav ul li {
+    margin: 10px 0; /* Add more space between vertical items */
+  }
+
+  nav ul li a {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .category-title {
+    font-size: 20px;
+  }
+
+  .video-item {
+    padding-top: 56.25%;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(200px, 1fr)
+    ); /* Smaller size for mobile */
+  }
+
+  nav ul li a {
+    font-size: 14px; /* Further reduce font size for very small screens */
+    padding: 8px 10px;
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack filters vertically on small screens */
+    align-items: center; /* Center the filters */
+  }
+
+  nav ul li {
+    margin: 10px 0; /* Add more space between vertical items */
+  }
+}
