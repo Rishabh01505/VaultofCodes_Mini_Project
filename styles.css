@@ -232,6 +232,11 @@ footer {
     ); /* Smaller size for mobile */
   }
 
+  .video-item.vertical {
+    padding-top: 100%; /* Ensure enough space for the video */
+    margin-bottom: 40px; /* Add space between video and text */
+  }
+
   nav ul {
     flex-direction: column; /* Stack filters vertically on small screens */
     align-items: center; /* Center the filters */
@@ -261,6 +266,11 @@ footer {
       auto-fill,
       minmax(200px, 1fr)
     ); /* Smaller size for mobile */
+  }
+
+  .video-item.vertical {
+    padding-top: 100%; /* Ensure enough space for the video */
+    margin-bottom: 40px; /* Add space between video and text */
   }
 
   nav ul li a {
